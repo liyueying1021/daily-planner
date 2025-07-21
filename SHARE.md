@@ -28,7 +28,7 @@ http://10.253.65.213:3000
 
 **快速部署：**
 ```bash
-cd /Users/a58/daily-planner-app
+cd /Users/a58/daily-planner
 ./deploy-vercel.sh
 ```
 
@@ -102,7 +102,7 @@ npm install -g vercel
 vercel login
 
 # 3. 部署应用
-cd /Users/a58/daily-planner-app
+cd /Users/a58/daily-planner
 vercel --prod
 ```
 
