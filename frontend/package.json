@@ -2,7 +2,7 @@
     "name": "daily-planner-frontend",
     "version": "1.0.0",
     "private": true,
-    "homepage": "https://your-username.github.io/daily-planner-app",
+    "homepage": "https://liyueying1021.github.io/daily-planner-app",
     "dependencies": {
         "@types/node": "^16.18.0",
         "@types/react": "^18.2.0",

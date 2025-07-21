@@ -4,7 +4,7 @@
 
 ## 🌐 在线访问
 
-**访问地址：** https://your-username.github.io/daily-planner-app
+**访问地址：** https://liyueying1021.github.io/daily-planner-app
 
 ## ✨ 功能特点
 
@@ -18,7 +18,7 @@
 
 ## 🚀 快速开始
 
-1. **访问应用**: 打开 https://your-username.github.io/daily-planner-app
+1. **访问应用**: 打开 https://liyueying1021.github.io/daily-planner-app
 2. **选择日期**: 点击左侧日历中的任意日期
 3. **添加任务**: 在右侧输入任务内容，设置优先级和时间
 4. **管理任务**: 标记完成、删除任务、查看进度
@@ -76,7 +76,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/daily-planner-app.git
+git clone https://github.com/liyueying1021/daily-planner-app.git
 cd daily-planner-app
 
 # 安装依赖

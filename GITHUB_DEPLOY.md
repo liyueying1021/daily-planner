@@ -19,7 +19,7 @@
 
 ```bash
 # 添加远程仓库（替换 YOUR_USERNAME 为您的GitHub用户名）
-git remote add origin https://github.com/YOUR_USERNAME/daily-planner-app.git
+git remote add origin https://github.com/liyueying1021/daily-planner-app.git
 
 # 推送代码到GitHub
 git branch -M main
@@ -42,7 +42,7 @@ git push -u origin main
 
 ```json
 {
-  "homepage": "https://YOUR_USERNAME.github.io/daily-planner-app",
+  "homepage": "https://liyueying1021.github.io/daily-planner-app",
   // ... 其他配置
 }
 ```
@@ -67,7 +67,7 @@ git push
 2. 您可以在 "Actions" 标签页查看部署进度
 3. 部署完成后，您的应用将在以下地址可用：
    ```
-   https://YOUR_USERNAME.github.io/daily-planner-app
+   https://liyueying1021.github.io/daily-planner-app
    ```
 
 ## 🎯 部署后的操作
@@ -81,7 +81,7 @@ git push
 现在您可以分享这个链接给任何人：
 ```
 🌐 每日计划助手
-https://YOUR_USERNAME.github.io/daily-planner-app
+https://liyueying1021.github.io/daily-planner-app
 
 ✨ 功能特点：
 • 美观的左右分栏界面
