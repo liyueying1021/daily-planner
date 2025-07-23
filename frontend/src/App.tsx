@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, isToday, addMonths, subMonths, addDays } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 import { Plus, CheckCircle, Circle, Trash2, Sparkles, Calendar, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -22,52 +22,80 @@ interface AIAnalysis {
 const App: React.FC = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const [tasks, setTasks] = useState<Task[]>([
-        // 添加一些演示数据
-        {
-            id: '1',
-            title: '完成项目报告',
-            completed: true,
-            priority: 'high',
-            time: '09:00',
-            date: format(new Date(), 'yyyy-MM-dd')
-        },
-        {
-            id: '2',
-            title: '团队会议',
-            completed: false,
-            priority: 'medium',
-            time: '14:00',
-            date: format(new Date(), 'yyyy-MM-dd')
-        },
-        {
-            id: '3',
-            title: '阅读技术文档',
-            completed: false,
-            priority: 'low',
-            date: format(new Date(), 'yyyy-MM-dd')
-        },
-        {
-            id: '4',
-            title: '健身锻炼',
-            completed: true,
-            priority: 'medium',
-            time: '18:00',
-            date: format(addDays(new Date(), 1), 'yyyy-MM-dd')
-        },
-        {
-            id: '5',
-            title: '学习新技能',
-            completed: false,
-            priority: 'high',
-            date: format(addDays(new Date(), 1), 'yyyy-MM-dd')
+    // 从LocalStorage加载数据或使用默认演示数据
+    const loadTasksFromStorage = (): Task[] => {
+        try {
+            const savedTasks = localStorage.getItem('daily-planner-tasks');
+            if (savedTasks) {
+                return JSON.parse(savedTasks);
+            }
+        } catch (error) {
+            console.error('加载数据失败:', error);
         }
-    ]);
+
+        // 如果没有保存的数据，返回演示数据
+        return [
+            {
+                id: '1',
+                title: '完成项目报告',
+                completed: true,
+                priority: 'high',
+                time: '09:00',
+                date: format(new Date(), 'yyyy-MM-dd')
+            },
+            {
+                id: '2',
+                title: '团队会议',
+                completed: false,
+                priority: 'medium',
+                time: '14:00',
+                date: format(new Date(), 'yyyy-MM-dd')
+            },
+            {
+                id: '3',
+                title: '阅读技术文档',
+                completed: false,
+                priority: 'low',
+                date: format(new Date(), 'yyyy-MM-dd')
+            },
+            {
+                id: '4',
+                title: '健身锻炼',
+                completed: true,
+                priority: 'medium',
+                time: '18:00',
+                date: format(addDays(new Date(), 1), 'yyyy-MM-dd')
+            },
+            {
+                id: '5',
+                title: '学习新技能',
+                completed: false,
+                priority: 'high',
+                date: format(addDays(new Date(), 1), 'yyyy-MM-dd')
+            }
+        ];
+    };
+
+    const [tasks, setTasks] = useState<Task[]>(loadTasksFromStorage);
     const [newTask, setNewTask] = useState('');
     const [selectedPriority, setSelectedPriority] = useState<'low' | 'medium' | 'high'>('medium');
     const [selectedTime, setSelectedTime] = useState('');
     const [aiAnalysis, setAiAnalysis] = useState<AIAnalysis | null>(null);
     const [isLoadingAI, setIsLoadingAI] = useState(false);
+
+    // 保存数据到LocalStorage
+    const saveTasksToStorage = (tasksToSave: Task[]) => {
+        try {
+            localStorage.setItem('daily-planner-tasks', JSON.stringify(tasksToSave));
+        } catch (error) {
+            console.error('保存数据失败:', error);
+        }
+    };
+
+    // 当tasks变化时自动保存
+    useEffect(() => {
+        saveTasksToStorage(tasks);
+    }, [tasks]);
 
     // 生成日历数据
     const monthStart = startOfMonth(currentDate);
